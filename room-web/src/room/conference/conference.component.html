@@ -1,0 +1,46 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="conferbox">
+    <span defaultOverlayTarget></span>
+    <ul>		
+		<li><h6>Room ID:<em>{{roomItemId}}</em></h6></li>
+		<li *ngIf="roomItem.room"><h6>Room name:<em>{{roomItem.room.name}}</em> </h6></li>
+		<li *ngIf="roomItem.room"><h6>Media Server: <em>{{roomItem.room.mediaServer}}</em></h6></li>
+        <li *ngIf="roomItem.room.broadcast.isLive"><h6>Broadcast URL: <em>{{roomItem.room.broadcast.url}}/{{roomItem.room.broadcast.streamId}}</em></h6></li>		
+	</ul>		
+
+	<p>
+	<div class="btn-toolbar">	
+	    <button type="button" style="width:120px" class="btn btn-primary" (click)="onLeave()">{{leaveButtonCaption}}</button>	
+	    <button type="button" [disabled]="!joined" style="width:120px" class="btn" [ngClass]="{'btn-success':!roomItem.room.broadcast.isLive, 'btn-danger':roomItem.room.broadcast.isLive}" (click)="onBroadcast()">{{broadcastButtonCaption}}</button>
+		<button type="button" [disabled]="!joined" style="width:120px" class="btn" [ngClass]="{'btn-success':!roomItem.room.recording.isStarted, 'btn-danger':roomItem.room.recording.isStarted}" (click)="onRecord()">{{recordButtonCaption}}</button>	
+	</div>
+	<p>
+
+	<div class="row" style="min-width:100%; max-width:100%">
+	    
+	    <div class="col-md-1" style="min-width:165px; min-height:125px; max-width:165px; max-height:125px">
+	        <div id="preview" style="width:160px; height:120px;" title="preview"></div>
+	    </div>
+	    <div id="remote" class="col-md-12">
+	        <div class="row">
+	             <div id="remote1" class="col-md-2"></div>
+	             <div id="remote2" class="col-md-2"></div>
+	             <div id="remote3" class="col-md-2"></div>
+	        </div>
+	        <div class="row">
+	             <div id="remote4" class="col-md-2"></div>
+	             <div id="remote5" class="col-md-2"></div>
+	             <div id="remote6" class="col-md-2"></div>
+	        </div>
+	        <div class="row">
+	             <div id="remote7" class="col-md-2"></div>
+	             <div id="remote8" class="col-md-2"></div>
+	             <div id="remote9" class="col-md-2"></div>
+	        </div>         
+	    </div>
+	</div>
+</div>	
+	
+	
+	

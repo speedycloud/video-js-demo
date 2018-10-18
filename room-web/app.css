@@ -1,0 +1,109 @@
+a {
+    cursor: pointer;
+}
+.container-fluid{
+	background: #f8f8f8;
+	padding: 0 0 30px 0;
+	min-height: 600px;
+}
+
+.help-block {
+    font-size: 12px;
+}
+.topbox{
+	background: #fff;
+	padding: 12px 26px;
+}
+.topbox b{
+	font-weight: 500;
+	margin-right: 10px;
+}
+
+.zealcontainer{
+    width:760px;
+    margin: 0 auto;
+    
+}
+.footer{
+	padding: 16px 0 8px;
+	background: #fff;
+
+}
+.table-apps th{
+	background: #f7f7f7;
+}
+
+.table-apps td, .table-apps th{
+	border-right: 1px solid #f4f4f4;
+	border-bottom: 1px solid #f4f4f4 !important;
+	height: 35px !important;
+	line-height: 35px !important;
+	background: #fff;
+}
+
+.table-apps tr:hover, .table-apps tr:focus{
+	background: #f4f4f4;
+}
+
+#conferbox{ 
+	padding: 0 10px;
+	margin-top:-25px;
+}
+
+#conferbox ul, #conferbox li{
+	margin: 0;
+	padding: 0;
+}
+#conferbox ul{
+	background: #f4f4f4;
+    display: block;
+    height: 45px;
+    margin-top: -40px;
+    margin-bottom: 15px;
+}
+#conferbox li{ 
+	float: left; 
+	list-style: none;
+	margin-right: 15px;
+}
+#conferbox li em{
+	font-style: normal;
+	color: #337ab7;
+	margin-left: 10px;
+	font-weight: 500;
+
+}
+#conferbox button{
+	clear: both;
+	display: block;
+}
+#conferbox .col-md-1{
+	position: absolute;
+    right: 30px;
+    top: 100px;
+}
+#conferbox .col-md-2{
+	float:left;
+	margin-right: 20px;
+}
+ #conferbox h5{ 
+   margin-top: 15px;
+ }
+ 
+ .login-page .help-block{
+ 	text-align: left;
+    color: red;
+ }
+.alert-danger{
+	position: fixed;
+    z-index: 1000;
+    width: 360px;
+    left: 50%;
+    margin-left: -180px;
+    top: 10px;
+}
+.logout{
+	background: #f4f4f4;
+	color: #337ab7;
+    border: none;
+}

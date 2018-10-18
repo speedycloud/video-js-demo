@@ -1,0 +1,30 @@
+<div nz-row [nzType]="'flex'" [nzJustify]="'space-between'" style="margin-bottom: 30px;" class="project_title">
+    <div nz-col [nzSpan]="24" style="margin-bottom: 30px;">
+        <app-datepicker (outer)="search()"></app-datepicker>
+    </div>
+    
+    <div nz-col [nzSpan]="12">
+        <app-echart [echartData]="echart_data01" #publish></app-echart>
+    </div>
+    <div nz-col [nzSpan]="12">
+        <app-echart [echartData]="echart_data02" #subscribe></app-echart>
+    </div>
+    <div nz-col [nzSpan]="12">
+        <app-echart [echartData]="echart_data03" #braoadcast></app-echart>
+    </div>
+    <div nz-col [nzSpan]="12">
+        <app-echart [echartData]="echart_data04" #recording></app-echart>
+    </div>
+    <div nz-col [nzSpan]="12">
+        <app-echart [echartData]="echart_data05" #mix></app-echart>
+    </div>
+    <div nz-col [nzSpan]="12">
+        <app-echart [echartData]="echart_data06" #transcoding></app-echart>
+    </div>
+    
+    <div nz-col [nzSpan]="24">
+        <app-data-table [dataIn]="tabledatas" [dataHeader]="dataHeader" [sortName]="sortName" #appDatas></app-data-table>
+    </div>
+    
+</div>
+

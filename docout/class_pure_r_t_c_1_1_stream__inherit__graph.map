@@ -1,0 +1,5 @@
+<map id="PureRTC.Stream" name="PureRTC.Stream">
+<area shape="rect" id="node2" href="$class_pure_r_t_c_1_1_local_stream.html" title="Stream from browser constructed from camera, screen... " alt="" coords="5,80,160,107"/>
+<area shape="rect" id="node3" href="$class_pure_r_t_c_1_1_remote_stream.html" title="Stream from server retrieved by &#39;stream&#45;added&#39; event. " alt="" coords="185,80,353,107"/>
+<area shape="rect" id="node4" href="$class_pure_r_t_c_1_1_remote_mixed_stream.html" title="A RemoteStream whose video track is mixed by server. " alt="" coords="167,155,371,181"/>
+</map>

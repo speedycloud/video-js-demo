@@ -1,0 +1,21 @@
+.project_title h3{
+    font-size: 24px;
+    margin:9px 0;
+}
+.project_title h3 span{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 12px;
+    margin: 9px 0;
+    font-weight: normal;
+}
+
+.project_content span{
+    width: 200px;
+    display: inline-block;
+    text-align: right;
+    font-weight: bolder;
+}
+.project_content p{
+    line-height: 24px;
+}

@@ -1,0 +1,68 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="zealcontainer">
+
+    <form name="form" (ngSubmit)="f.form.valid && joinRoom()" #f="ngForm" novalidate>
+
+        <!-- Room id input -->
+        <div class="form-group row">
+            <label for="roomid" class="col-sm-3 control-label">Room id</label>            
+            <div #roomid class="col-sm-6" [ngClass]="{ 'has-error': f.submitted && !roomid.valid }">
+                <input type="text" class="form-control" name="room-id" [(ngModel)]="room._id" #roomid="ngModel" required />
+                <div *ngIf="f.submitted && !roomid.valid" class="help-block">Room ID is required</div>
+            </div>
+        </div>
+
+        <!-- Local resolution dropdown -->
+        <div class="form-group row">
+            <label for="resdropdown" class="col-sm-3 control-label">Camera resolution</label>
+            <div #resdropdown class="col-sm-6">
+                <select class="form-control" type="string" [formControl]="complexForm.controls['resolution']">
+                    <option *ngFor="let r of resolutions" [ngValue]="r.name">{{r.name}}</option>
+                </select>
+            </div>
+        </div>
+        <!-- Mixing -->
+        <div class="form-group row">
+            <div class="col-sm-6" >
+                <div *ngIf="selectedRoom.room">
+                    <div *ngIf="selectedRoom.room.enableMixing">
+                        <input  #mixing type="checkbox" [formControl]="complexForm.controls['mixing']"> Receive mixed video
+                    </div>
+                    <div *ngIf="!selectedRoom.room.enableMixing">
+                        <label> Mixing disabled </label>
+                    </div>                     
+                </div>               
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Join</button>
+            <a [routerLink]="['/room/create']" class="btn btn-link">Create room</a>
+        </div>
+    </form>
+
+    <div [hidden]="roomList.length == 0">
+        <h4 align="center">Previously created rooms</h4>
+        
+        <table id=roomTable class="table table-apps">             
+            <thead> <tr class="black-muted-bg">
+                <th class=""> </th>
+                <th class="text-center uppercase">id</th>
+                <th class="text-center uppercase">name</th>
+                <th class="text-center uppercase">mix</th>
+                <th class="text-center uppercase">mix-res</th>            
+                <th class="text-center uppercase">expires</th>
+            </tr> </thead>
+
+            <tbody> <tr *ngFor="let item of roomList" class="no-top-border" [ngClass]="{selected: item == selectedRoom}" (click)="onRoomSelectRow(item)">
+                <td><a class="ng2-smart-action" href="#"><i class="fa fa-trash" (click)="onDelete(item)"></i></a></td> 
+                <td class="text-center">{{item._id}}</td>
+                <td class="text-center">{{item.room.name}}</td>
+                <td class="text-center">{{item.room.enableMixing}}</td>
+                <td class="text-center">{{item.room.mediaMixing.video.resolution}}</td>
+                <td class="text-center" [ngClass]="{ 'has-error': isExpired(item.room.expiresAt) }" >{{toDate(item.room.expiresAt) | date: "yyyy-MM-dd HH:mm:ss Z"}}</td>
+            </tr> </tbody>
+        </table>
+    </div>
+
+</div>

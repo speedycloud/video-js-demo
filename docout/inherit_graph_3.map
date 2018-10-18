@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_pure_r_t_c_1_1_stream.html" title="Handles the WebRTC (audio, video) stream, identifies the stream, and identifies the location where th..." alt="" coords="5,31,128,57"/>
+<area shape="rect" id="node2" href="$class_pure_r_t_c_1_1_local_stream.html" title="Stream from browser constructed from camera, screen... " alt="" coords="184,5,339,32"/>
+<area shape="rect" id="node3" href="$class_pure_r_t_c_1_1_remote_stream.html" title="Stream from server retrieved by &#39;stream&#45;added&#39; event. " alt="" coords="177,56,346,83"/>
+<area shape="rect" id="node4" href="$class_pure_r_t_c_1_1_remote_mixed_stream.html" title="A RemoteStream whose video track is mixed by server. " alt="" coords="395,56,599,83"/>
+</map>

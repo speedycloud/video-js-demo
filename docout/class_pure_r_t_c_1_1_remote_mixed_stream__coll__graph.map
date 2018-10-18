@@ -1,0 +1,4 @@
+<map id="PureRTC.RemoteMixedStream" name="PureRTC.RemoteMixedStream">
+<area shape="rect" id="node2" href="$class_pure_r_t_c_1_1_remote_stream.html" title="Stream from server retrieved by &#39;stream&#45;added&#39; event. " alt="" coords="22,80,191,107"/>
+<area shape="rect" id="node3" href="$class_pure_r_t_c_1_1_stream.html" title="Handles the WebRTC (audio, video) stream, identifies the stream, and identifies the location where th..." alt="" coords="45,5,168,32"/>
+</map>

@@ -1,0 +1,116 @@
+
+table {table-layout:auto}
+td {overflow:hidden; white-space:nowrap}
+
+
+.vertical-scroll-apps {
+    position: relative;
+    height: calc(40vh - 120px) ;
+    width:100%;
+}
+
+.vertical-scroll-app {
+    position: relative;
+    height: calc(50vh - 120px);
+    width:100%;
+}
+
+.table-apps {
+  > tbody > tr:hover td{
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.td-actions {
+  width: 40px;
+  text-align: center;
+  .actions {
+    float: none;
+    text-align: center;
+  }
+}
+
+.td-dropdown {
+  min-width: 60%;
+}
+
+.td-app-date {
+  width: 200px;
+}
+
+.col-secret {
+  width: 270px;
+}
+
+.col-view_secret {
+  width: 55px;
+}
+
+a.ng2-smart-action {
+    font-size: 18px !important;
+    color: $default-text;
+    padding: 0 5px;
+    display: inline-block;
+  }
+
+a.ng2-smart-action-add {
+    font-size: 36px !important;
+    color: $default-text;
+    padding: 0 0px;
+    display: inline-block;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.col-add-control {
+  padding: 0 0px;
+  display: inline-block; 
+}
+
+.col-add {
+   width: 40px;
+   padding: 0 0px;
+   display: inline-block; 
+}
+
+a.ng2-smart-action-btn {
+    font-size: 24px !important;
+    color: $default-text;
+    display: inline-block;
+    padding: 5px 0px;
+}
+
+.col-action {
+   width: 36px;
+   display: inline-block; 
+   margin: auto;
+}
+
+.selected {
+    font-weight: bold;    
+}
+
+.control-label {
+    padding-top: 11px;
+    color: $text-color;
+  }
+
+.has-error {
+    color: red;
+    font-weight: bold;
+}

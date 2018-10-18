@@ -1,0 +1,14 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="col-md-6 col-md-offset-3">
+    <h2>User management console</h2>
+    <h4>Registered users</h4>
+    <ul>        
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstname}} {{user.lastname}} {{user.email}})
+            - <a (click)="deleteUser(user._id)">Delete</a>
+        </li>
+        <br>
+        <button [routerLink]="['/register']">Create user</button>         
+    </ul>    
+</div>

@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+
+	"types": [
+            // add node as an option
+            "node"
+         ],
+        "typeRoots": [
+            "./node_modules/@types/"
+        ]
+    },
+    "compileOnSave": true,
+    "exclude": [
+        "node_modules/*"
+    ],
+    "files": [
+        "typings/index.d.ts"
+    ]
+}

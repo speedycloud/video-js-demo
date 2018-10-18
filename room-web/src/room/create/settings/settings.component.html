@@ -1,0 +1,130 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="container-fluid room-settings-container">
+
+    <div class="row room-settings-header">
+        <div class="col-sm-10">
+            <h1>Room settings</h1>
+        </div>
+    </div>
+
+    <div class="jumbotron"> 
+        <form [formGroup]="complexForm" (ngSubmit)="onSubmit(complexForm.value)">
+       
+            <table>
+                <!-- Publish limit -->
+                <tr>
+                    <td style="width:120px"> <label>Publish limit</label> </td>
+                    <td> <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['publishLimit'].valid && complexForm.controls['publishLimit'].touched}">                
+                            <input class="form-control" type="number" placeholder="" [formControl]="complexForm.controls['publishLimit']">
+                            <div *ngIf="complexForm.controls['publishLimit'].hasError('required') && complexForm.controls['publishLimit'].touched" class="alert alert-danger">Publish limit is required (has to be -1 or greater).</div>
+                            <div *ngIf="complexForm.controls['publishLimit'].hasError('min-value') && complexForm.controls['publishLimit'].touched" class="alert alert-danger">Publish limit has to be -1 (unlimited), 0 (disabled), or an integer number.</div>
+                    </div> </td>
+                </tr>
+
+                <!-- User limit -->
+                <tr>
+                    <td><label>User limit</label></td>
+                    <td> <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['userLimit'].valid && complexForm.controls['userLimit'].touched}">
+                            <input class="form-control" type="number" placeholder="" [formControl]="complexForm.controls['userLimit']">
+                            <div *ngIf="complexForm.controls['userLimit'].hasError('required') && complexForm.controls['userLimit'].touched" class="alert alert-danger">User limit is required</div>
+                            <div *ngIf="complexForm.controls['userLimit'].hasError('max-value') && complexForm.controls['userLimit'].touched" class="alert alert-danger">User limit has to be a number within the range 0 (disabled) to 9.</div>
+                    </div> </td>
+                </tr>
+
+                <!-- Mode -->
+                <tr>
+                    <td><label>Mode</label></td>
+                    <td> <div class="form-group">
+                            <select class="form-control" type="string" [formControl]="complexForm.controls['mode']">
+                                <option *ngFor="let m of modes" [ngValue]="m.name">{{m.name}}</option>
+                            </select>
+                    </div> </td>
+                </tr>                
+            </table>
+ 
+
+            <fieldset>
+            <legend></legend>
+
+            <table>
+                <!-- Mixing -->
+                <label>                
+                    <input #mixing type="checkbox"  [formControl]="complexForm.controls['mixing']" (click)="onEnableMixingClick(mixing.checked)"> Enable mixing
+                </label>                
+
+                <!-- Resolution -->
+                <tr>
+                    <td><label>Resolution</label></td>
+                    <td> <div class="form-group">
+                            <select class="form-control" type="string" [formControl]="complexForm.controls['resolution']">
+                                <option *ngFor="let r of resolutions" [ngValue]="r.name">{{r.name}}</option>
+                            </select>
+                    </div> </td>
+                </tr>
+
+                <!-- Bit rate -->
+                <tr>
+                    <td><label>Bit rate</label></td>
+                    <td> <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['bitrate'].valid && complexForm.controls['bitrate'].touched}">
+                            <input class="form-control" type="number" placeholder="" [formControl]="complexForm.controls['bitrate']">
+                            <div *ngIf="complexForm.controls['bitrate'].hasError('required') && complexForm.controls['bitrate'].touched" class="alert alert-danger">Bit rate is required</div>
+                            <div *ngIf="complexForm.controls['bitrate'].hasError('min-value') && complexForm.controls['bitrate'].touched" class="alert alert-danger">Bit rate has to be an integer number.</div>
+                    </div> </td>
+                </tr>
+
+                <!-- Background color -->
+                <tr>
+                    <td><label>Bk color</label></td>
+                    <td> <div class="form-group">
+                            <select class="form-control" type="string" [formControl]="complexForm.controls['bkColor']">
+                                <option *ngFor="let b of bkColors" [ngValue]="b.name">{{b.name}}</option>
+                            </select>
+                    </div> </td>
+                </tr>
+
+                <!-- Max input -->
+                <tr>
+                    <td><label>Max input</label></td>
+                    <td> <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['maxInput'].valid && complexForm.controls['maxInput'].touched}">
+                            <input class="form-control" type="number" placeholder="" [formControl]="complexForm.controls['maxInput']">
+                            <div *ngIf="complexForm.controls['maxInput'].hasError('required') && complexForm.controls['maxInput'].touched" class="alert alert-danger">Max input is required</div>
+                            <div *ngIf="complexForm.controls['maxInput'].hasError('min-value') && complexForm.controls['maxInput'].touched" class="alert alert-danger">Max input has to be greater than 1</div>
+                    </div> </td>
+                </tr>
+
+                <tr>
+                    <td><label>Layout</label></td>
+                    <td> <div class="form-group">
+                            <select class="form-control" type="string" [formControl]="complexForm.controls['layout']">
+                                <option *ngFor="let l of layouts" [ngValue]="l.name">{{l.name}}</option>
+                            </select>
+                    </div> </td>
+                </tr>                
+
+                <!-- AV coordinated -->
+                <tr> <label>
+                    <input type="checkbox"  [formControl]="complexForm.controls['avCoordinated']"> AV coordinated
+                </label> </tr>
+
+                <!-- Multi streaming -->
+                <tr> <label>
+                    <input type="checkbox"  [formControl]="complexForm.controls['multistreaming']"> Multi-streaming
+                </label> </tr>
+
+                <!-- Crop -->
+                <tr> <label>
+                    <input type="checkbox"  [formControl]="complexForm.controls['crop']"> Crop
+                </label> </tr>
+
+            </table> 
+            </fieldset>
+
+            <p><p>
+            <div class="form-group">    
+                <button style="width:60px" [disabled]="!complexForm.valid" class="btn btn-primary">Ok</button>               
+                <button style="width:60px" (click)="onCancel()">Cancel</button>    
+            </div>
+        </form>
+    </div>
+</div>

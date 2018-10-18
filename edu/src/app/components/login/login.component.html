@@ -1,0 +1,61 @@
+<div id="login">
+    <div class="login-modal">
+      <svg id="line-sine" style="width: 100%;" height="395px" viewBox="-91 272 2264 395" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs></defs>
+        <g id="wave" opacity="0.35" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-90.000000, 273.000000)">
+            <path d="M49.2562814,391.102456 C49.2562814,391.102456 495.444986,-150.883066 1095.08631,130.835928 C1694.72764,412.554923 2262,389.462704 2262,389.462704" id="Path-2" stroke="#FFFFFF" opacity="0.5" transform="translate(1155.628141, 220.380740) scale(1, -1) translate(-1155.628141, -220.380740) "></path>
+            <path d="M0,393 C0,393 407.987617,-230.823127 956.289789,93.4342872 C1504.59196,417.691701 2023.29648,391.112651 2023.29648,391.112651" id="Path-2" stroke="#FFFFFF" fill="#24A3E2"></path>
+        </g>
+      </svg>
+      <div class="p_text">
+        <div class="p_logo"></div>
+
+        <h5>1 个 SDK ，4 行代码，即可实现</h5>
+        <ul>
+          <li>语音通话</li>
+          <li>视频通话</li>
+          <li>全互动直播</li>
+        </ul>
+      </div>
+      <div class="mask">
+        <h4 style="font-size: 18px;">欢迎登录</h4>
+        <h3 style="margin-top: 20px;">迅达云</h3>
+        <h3 style="margin-top: 0;">音视频互动Demo</h3>
+      </div>
+      <div class="login_content">
+        <h1>
+          登 录
+        </h1>
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="_submitForm()">
+        <!-- <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="login()"> -->
+          <div nz-form-item>
+            <div nz-form-control>
+              <nz-input formControlName="email" [nzPlaceHolder]="'用户名'" [nzSize]="'large'" auto-complete="new-password">
+                <ng-template #prefix>
+                  <i class="anticon anticon-user"></i>
+                </ng-template>
+              </nz-input>
+              <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">用户名格式输入有误</div>
+              <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('required')">请输入用户名</div>
+              <!-- <div nz-form-explain *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('required')">用户名不能为空!</div> -->
+            </div>
+          </div>
+          <div nz-form-item style="margin-top:30px;">
+            <div nz-form-control>
+              <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'密码'" [nzSize]="'large'" auto-complete="new-password">
+                <ng-template #prefix>
+                  <i class="anticon anticon-lock"></i>
+                </ng-template>
+              </nz-input>
+              <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">请输入密码</div>
+            </div>
+          </div>
+          <div nz-form-item>
+
+            <button nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'" style="width: 100%; margin-top: 10px;">登录</button>
+            <div class="register" ><u><a routerLink = "/register">立即注册</a></u></div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

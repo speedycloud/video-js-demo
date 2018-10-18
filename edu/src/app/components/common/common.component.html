@@ -1,0 +1,33 @@
+
+  <nz-layout style="background:#fff;">
+    <nz-header style="background: #fff; padding:0;position: fixed;top: 0; width: 100%;height: 56px;line-height: 56px;z-index: 99;">
+      <!-- <i class="anticon trigger" style="line-height: 56px;" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i> -->
+      <app-dropdown></app-dropdown>
+      <div style="display: inline;float: right;" [style.margin-right]="!isCollapsed ? '219px':'83px'">
+        <span>欢迎   &nbsp;&nbsp;</span>
+        <nz-dropdown>
+          <a class="ant-dropdown-link" nz-dropdown>
+            {{ username }}
+            <i class="anticon anticon-down"></i>
+          </a>
+          <ul nz-menu>
+            <li nz-menu-item (click)="showModal()">
+              <a rel="noopener noreferrer"    href="javascript:;">登出</a>
+            </li>
+          </ul>
+        </nz-dropdown>
+
+      </div>
+    </nz-header>
+    <nz-content style="margin:0 16px;margin-top: 64px; margin-bottom: 20px;background: #fff;">
+      <router-outlet></router-outlet>
+    </nz-content>
+    <!-- <nz-footer style="text-align: center;">©2012-2018. SpeedyCloud.cn版权所有. All Rights Reserved. 京ICP备13015005号-1 京ICP证130430号</nz-footer> -->
+  </nz-layout>
+
+<nz-modal [nzVisible]="isVisible" [nzTitle]="'登出'" [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)"
+  (nzOnOk)="handleOk($event)" [nzWidth]="300">
+  <ng-template #modalContent>
+    <p style="margin:20px auto;text-align: center;font-size: 14px;">您确认要退出登录？</p>
+  </ng-template>
+</nz-modal>

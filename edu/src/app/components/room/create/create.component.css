@@ -1,0 +1,36 @@
+.content{
+  width:760px;
+  min-height:675px;
+  margin: 0 auto;
+}
+p{
+    display:flex;
+    margin-bottom:20px; 
+    margin-top:20px;
+}
+p span{
+    width:200px;
+    line-height:28px;
+    text-align: left;
+    margin-right:10px;
+}
+p nz-input{
+    width:200px;
+}
+p nz-select{
+    width:200px;
+}
+[nz-button] {
+        margin-right: 8px;
+        margin-bottom: 12px;
+ }
+ .head{
+   padding-top:50px;
+ }
+ .modal-box{
+      display:flex;
+      margin-bottom:10px;
+ }
+ .modal-box span{
+     width:150px;
+ }

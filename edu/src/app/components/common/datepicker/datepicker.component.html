@@ -1,0 +1,15 @@
+<span>起始日期: </span>
+<nz-datepicker style="width: 150px;" [(ngModel)]="_startDate"
+  [nzFormat]="'YYYY-MM-DD'" [nzSize]="'large'" [nzPlaceHolder]="'开始日期'"></nz-datepicker>
+<span>&nbsp;至&nbsp;</span>
+  <nz-datepicker style="width: 150px;" [(ngModel)]="_endDate"
+  [nzFormat]="'YYYY-MM-DD'" [nzSize]="'large'" [nzPlaceHolder]="'结束日期'"></nz-datepicker>
+
+<nz-select style="min-width: 200px;" [(ngModel)]="selectedOption" [nzSize]="'large'" [nzPlaceHolder]="'请选择'" nzAllowClear>
+  <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option" [nzDisabled]="option.disabled">
+  </nz-option>
+</nz-select>
+<button nz-button type="button" [nzType]="'primary'" [nzSize]="'large'" (click)="searchCharts()">
+  <i class="anticon anticon-search"></i>
+  <span>查询</span>
+</button>

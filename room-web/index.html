@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!--<base href="/" />-->
+    <title>Zealcomm Sample Client application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" >
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- application css -->
+    <link href="app.css" rel="stylesheet" />
+
+    <!-- polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+
+    <script src="socket.io.js" type="text/javascript"></script>
+    <script src="adapter.js" type="text/javascript"></script>
+    <script src="purertc.sdk.js" type="text/javascript"></script>
+    <script src="purertc.sdk.ui.js" type="text/javascript"></script>
+
+    <script>
+        System.import('app').catch(function (err) { console.error(err); });
+    </script>
+</head>
+<body>
+    <app>Loading, please wait...</app>
+</body>
+</html>

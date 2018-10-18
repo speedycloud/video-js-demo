@@ -1,0 +1,19 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<span defaultOverlayTarget></span>
+<div class="col-md-6 col-md-offset-3">
+    <h2>Create room</h2>
+    <button class="btn" (click)="onSettings()">Settings</button>
+    <p><p>
+    <form name="form" (ngSubmit)="f.form.valid && createRoom()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !roomname.valid }">
+            <label for="room-name">Room name</label>
+            <input type="text" class="form-control" name="room-name" [(ngModel)]="room.name" #roomname="ngModel" required />
+            <div *ngIf="f.submitted && !roomname.valid" class="help-block">Room name is required</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Create</button>
+            <button class="btn" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>    
+</div>

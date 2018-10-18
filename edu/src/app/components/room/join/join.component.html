@@ -1,0 +1,145 @@
+<div class="content">
+    <div class="head">
+        <p>
+            <span>采集分辨率:</span>
+            <nz-select style="width: 120px;" [(ngModel)]="resolution" style="width:200px;" [nzPlaceHolder]="'请选择'" nzAllowClear (ngModelChange)="choseresloution($event.value)">
+                <nz-option *ngFor="let option of optionList" [nzLabel]="option.label" [nzValue]="option">
+                </nz-option>
+            </nz-select>
+        </p>
+        <div class="btn">
+            <!-- <button nz-button nzType="primary" (click)="join()">加入</button> -->
+            <button nz-button nzType="primary" (click) = 'showModal()'>创建</button>
+        </div>
+    </div>
+    <div class="body">
+        <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" >
+            <thead nz-thead>
+                <tr>
+                    <th nz-th nzCheckbox>
+                       
+                    </th>
+                    <th nz-th>
+                        <span>房间名</span>
+                    </th>
+                    <th nz-th>
+                        <span>是否混流</span>
+                    </th>
+                    <th nz-th>
+                        <span>混流分辨率</span>
+                    </th>
+                    <th nz-th>
+                        <span>过期时间</span>
+                    </th>
+                    <th nz-th>
+                        <span>删除房间</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody nz-tbody>
+                <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+                    
+                    <td nz-td>
+                        <a (click)="join(data)">进入</a>
+                    </td>
+                    <td nz-td>{{data.room.name}}</td>
+                    <td nz-td>{{data.room.enableMixing}}</td>
+                    <td nz-td>{{data.room.mediaMixing.video.resolution}}</td>
+                    <td nz-td [ngClass]="{ 'has-error': isExpired(data.room.expiresAt) }">{{toDate(data.room.expiresAt) | date: "yyyy-MM-dd HH:mm:ss Z"}}</td>
+                    <td nz-td>
+                        <span><a (click)="delete(data)">删除</a></span>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>
+
+<nz-modal [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel($event)">
+    <ng-template #modalTitle>
+        房间设置
+    </ng-template>
+    <ng-template #modalContent>
+        <div class="modal-box">
+        
+            <span>房间名称:</span>
+            <nz-input [(ngModel)]="room_name" style="width:200px;" ></nz-input>
+        
+        </div>
+        <div class="modal-box">
+
+            <span>Publish limit:</span>
+            <nz-input-number [(ngModel)]="publishLimit" style="width:200px;" [nzMin]="-1" [nzMax]="20" [nzStep]="1"></nz-input-number>
+
+        </div>
+        <div class="modal-box">
+            <span>User limit:</span>
+            <nz-input-number [(ngModel)]="userLimit" style="width:200px;" [nzMin]="0" [nzMax]="225" [nzStep]="1"></nz-input-number>
+        </div>
+        <div class="modal-box">
+            <span>Mode:</span>
+            <nz-select [(ngModel)]="mode" style="width:200px;" [nzPlaceHolder]="'请选择'" nzAllowClear>
+                <nz-option *ngFor="let option of modes" [nzLabel]="option.label" [nzValue]="option">
+                </nz-option>
+            </nz-select>
+        </div>
+        <div class="modal-box">
+            <label nz-checkbox [(ngModel)]="_enable" (ngModelChange)="_console($event)">
+                <span>Enable mixing</span>
+            </label>
+        </div>
+        <div class="modal-box">
+            <span>Resolution:</span>
+            <nz-select [(ngModel)]="_resolution" style="width:200px;" [nzDisabled]=" is_resolution" [nzPlaceHolder]="'请选择'" nzAllowClear>
+                <nz-option *ngFor="let option of resolutions" [nzLabel]="option.label" [nzValue]="option">
+                </nz-option>
+            </nz-select>
+        </div>
+        <div class="modal-box">
+            <span>Bit rate:</span>
+            <nz-input-number [(ngModel)]="bitRate" style="width:200px;" [nzDisabled]=" is_bit_rate" [nzMin]="0" [nzMax]="20" [nzStep]="1"></nz-input-number>
+        </div>
+        <div class="modal-box">
+            <span>Bk color:</span>
+            <nz-select [(ngModel)]="bkColor" style="width:200px;" [nzPlaceHolder]="'请选择'" [nzDisabled]=" is_bk_color" nzAllowClear>
+                <nz-option *ngFor="let option of bk_colors" [nzLabel]="option.label" [nzValue]="option">
+                </nz-option>
+            </nz-select>
+        </div>
+        <div class="modal-box">
+            <span>Max input:</span>
+            <nz-input-number [(ngModel)]="maxInput" style="width:200px;" [nzDisabled]=" is_max_input" [nzMin]="0" [nzMax]="20" [nzStep]="1"></nz-input-number>
+
+        </div>
+        <div class="modal-box">
+            <span>Layout:</span>
+            <nz-select [(ngModel)]="layout" style="width:200px;" [nzPlaceHolder]="'请选择'" [nzDisabled]=" is_layout" nzAllowClear>
+                <nz-option *ngFor="let option of layouts" [nzLabel]="option.label" [nzValue]="option">
+                </nz-option>
+            </nz-select>
+        </div>
+        <div class="modal-box">
+            <label nz-checkbox [(ngModel)]="_av_coordinated" [nzDisabled]=" is_av_coordinated">
+                <span>AV coordinated</span>
+            </label>
+        </div>
+        <div class="modal-box">
+            <label nz-checkbox [(ngModel)]="_multi_streaming" [nzDisabled]=" is_multi_streaming">
+                <span>Multi-streaming</span>
+            </label>
+        </div>
+        <div class="modal-box">
+            <label nz-checkbox [(ngModel)]="_crop" [nzDisabled]=" is_crop">
+                <span>Crop</span>
+            </label>
+        </div>
+    </ng-template>
+    <ng-template #modalFooter>
+        <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="handleCancel($event)">
+            返 回
+        </button>
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="handleOk($event)" [nzLoading]="isConfirmLoading">
+            确 认
+        </button>
+    </ng-template>
+</nz-modal>

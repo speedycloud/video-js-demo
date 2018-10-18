@@ -1,0 +1,76 @@
+
+.content{
+  width:100%;
+  min-height:675px;
+}
+.head{
+    width:100%;
+    height:30px;
+}
+.head ul li{
+    float:left;
+    line-height: 30px;
+    margin-right:15px;
+}
+.small-video{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.small-video-left,.small-video-right{
+    width:320px;
+    height:250px;
+
+}
+.small-video-middle{
+    width:100%;
+}
+.btn-box{
+    padding:10px 0;
+    text-align: center;
+}
+[nz-button]{
+    width:120px;
+}
+em{
+    font-style: normal;
+}
+.chat{
+    width:100%;
+    height:500px;
+
+}
+.img_box{
+    width:100%;
+
+}
+.img_box img{
+    width:55%;
+}
+.receive{
+    width:100%;
+    height:300px;
+
+    overflow: auto;
+}
+.send{
+    width:100%;
+    height:50px;
+
+}
+.receive li{
+    display: flex;
+}
+.receive_head{
+    width:50px;
+
+
+    word-break:break-all;  overflow:auto;
+}
+.receive_msg{
+    width:120px;
+
+    word-break:break-all;  overflow:auto;
+}

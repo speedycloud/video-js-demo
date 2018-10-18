@@ -1,0 +1,14 @@
+{
+
+  "files": ["./src/**/*.{html,htm,css,js}"],
+  "open": false,
+  "logLevel": "silent",
+  "server": {
+    "middleware": {
+      "0": null
+    }
+  },
+
+  "port": 80,
+  "codeSync": false
+}
