@@ -66,14 +66,14 @@ export class ConferenceComponent implements OnInit {
   send_msg;
   list = [];
   resols = {
-      'uhd_4k': {width:"1280", height: "720"},
-      'hd1080p': {width:"1280", height: "720"},
-      'hd720p': {width:"1280", height: "720"},
-      'r720x720': {width:"640", height: "480"},
-      'xga': {width:"1024", height: "768"},
-      'svga': {width:"640", height: "480"},
-      'vga': {width:"640", height: "480"},
-      'sif': {width:"640", height: "640"}
+      'uhd_4k': {width:"3840", height: "2160"},         // maxbw 8000 own
+      'hd1080p': {width:"1920", height: "1080"},        // maxbw 4000
+      'hd720p': {width:"1280", height: "720"},          // maxbw 2000
+      'xga': {width:"1024", height: "768"},             // maxbw 1736
+      'r720x720': {width:"720", height: "720"},         // maxbw 1500 own
+      'svga': {width:"800", height: "600"},             // maxbw 1137
+      'vga': {width:"640", height: "480"},              // maxbw 800
+      'sif': {width:"320", height: "240"}               // maxbw 400
     };
   imgClick(eve){
     this.unsafe_url = eve;
@@ -617,7 +617,25 @@ export class ConferenceComponent implements OnInit {
             attachMediaStream(canvas, this.localStream.mediaStream);
           }
 
-          var opt: any = {codec: 'h264', maxVideoBW: 200, maxAudioBW: 60};
+          var maxVideoKbirate = 400;  // init min 400
+          if(this.localResolution == "uhd_4k"){
+            maxVideoKbirate = 8000;
+          } else if(this.localResolution == "hd1080p"){
+            maxVideoKbirate = 4000;
+          } else if(this.localResolution == "hd720p"){
+            maxVideoKbirate = 2000;
+          } else if(this.localResolution == "xga"){
+            maxVideoKbirate = 1736;
+          } else if(this.localResolution == "r720x720"){
+            maxVideoKbirate = 1500;
+          } else if(this.localResolution == "svga"){
+            maxVideoKbirate = 1137;
+          } else if(this.localResolution == "vga"){
+            maxVideoKbirate = 800;
+          } else if(this.localResolution == "sif"){
+            maxVideoKbirate = 400;
+          }
+          var opt: any = {codec: 'h264', maxVideoBW: maxVideoKbirate, maxAudioBW: 60};
           if (this.iceTransportPolicy) {
             opt.iceTransportPolicy = this.iceTransportPolicy;
           }
